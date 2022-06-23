@@ -107,10 +107,10 @@ function evaluate({ currentOperand, previousOperand, operation }) {
     case "-":
       computation = prev - current;
       break;
-    case "-":
+    case "*":
       computation = prev * current;
       break;
-    case "-":
+    case "÷":
       computation = prev / current;
       break;
   }
@@ -122,7 +122,7 @@ const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
 });
 function formatOperand(operand) {
   if (operand == null) return;
-  const [integer, decimal] = operand.split(`.`);
+  const [integer, decimal] = operand.split(".");
   if (decimal == null) return INTEGER_FORMATTER.format(integer);
   return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
 }
